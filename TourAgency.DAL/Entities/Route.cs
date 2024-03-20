@@ -9,4 +9,6 @@ public class Route : Entity
 	public Guid? CountryId { get; set; }
 
 	public Country? Country { get; set; }
+
+	public List<Sale> Sales { get; set; } = [];
 }
