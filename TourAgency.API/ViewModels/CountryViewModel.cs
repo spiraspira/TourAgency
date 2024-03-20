@@ -7,4 +7,6 @@ public class CountryViewModel
 	public string? Name { get; set; }
 
 	public decimal? VisaPrice { get; set; }
+
+	public List<RouteViewModel> Routes { get; set; } = [];
 }
