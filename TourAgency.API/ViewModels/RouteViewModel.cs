@@ -11,4 +11,6 @@ public class RouteViewModel
 	public Guid? CountryId { get; set; }
 
 	public CountryViewModel? Country { get; set; }
+
+	public List<SaleViewModel> Sales { get; set; } = [];
 }
