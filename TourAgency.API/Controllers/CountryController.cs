@@ -2,7 +2,7 @@
 
 [Route("api/[controller]")]
 [ApiController]
-public class ActorController(
+public class CountryController(
 	IMapper mapper,
 	IGenericService<CountryModel> countryService,
 	IValidator<CountryViewModel> validator)
