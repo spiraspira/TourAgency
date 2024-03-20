@@ -9,6 +9,5 @@ public class MappingProfile : Profile
 		CreateMap<Route, RouteModel>().ReverseMap();
 
 		CreateMap<Sale, SaleModel>().ReverseMap();
-
 	}
 }
