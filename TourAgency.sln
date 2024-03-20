@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourAgency.DAL", "TourAgency.DAL\TourAgency.DAL.csproj", "{6CADBED6-F8E6-468D-8B4F-2D53A9F463FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourAgency.DAL", "TourAgency.DAL\TourAgency.DAL.csproj", "{6CADBED6-F8E6-468D-8B4F-2D53A9F463FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourAgency.BLL", "TourAgency.BLL\TourAgency.BLL.csproj", "{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6CADBED6-F8E6-468D-8B4F-2D53A9F463FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CADBED6-F8E6-468D-8B4F-2D53A9F463FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CADBED6-F8E6-468D-8B4F-2D53A9F463FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
