@@ -12,6 +12,6 @@ public class CountryValidator : AbstractValidator<CountryViewModel>
 		RuleFor(country => country.VisaPrice)
 			.NotNull()
 			.GreaterThanOrEqualTo(0)
-			.WithMessage("Visa price cannot have negative value.");
+			.WithMessage("Visa price cannot be negative.");
 	}
 }
