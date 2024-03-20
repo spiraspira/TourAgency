@@ -9,4 +9,6 @@ public class RouteModel : Model
 	public Guid? CountryId { get; set; }
 
 	public CountryModel? Country { get; set; }
+
+	public List<SaleModel> Sales { get; set; } = [];
 }
