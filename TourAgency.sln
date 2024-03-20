@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourAgency.DAL", "TourAgenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourAgency.BLL", "TourAgency.BLL\TourAgency.BLL.csproj", "{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourAgency.API", "TourAgency.API\TourAgency.API.csproj", "{91272EE0-47F4-4F36-8EE9-D2C4816818D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58590DDC-BC26-4A62-B4FA-708AFFF33D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91272EE0-47F4-4F36-8EE9-D2C4816818D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91272EE0-47F4-4F36-8EE9-D2C4816818D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91272EE0-47F4-4F36-8EE9-D2C4816818D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91272EE0-47F4-4F36-8EE9-D2C4816818D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
