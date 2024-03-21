@@ -14,5 +14,7 @@ public static class DataAccessRegister
 		services.AddScoped<ICountryRepository, CountryRepository>();
 
 		services.AddScoped<IRouteRepository, RouteRepository>();
+
+		services.AddScoped<ISaleRepository, SaleRepository>();
 	}
 }
