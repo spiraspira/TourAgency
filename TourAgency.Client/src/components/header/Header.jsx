@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <AppBar position="static" elevation={0} style={{ backgroundColor: "#F8F8F8",  fontFamily: "'Helvetica', 'Arial', sans-serif" }}>
-      <Toolbar style={{display: 'flex', justifyContent: 'space-between'}}>
+      <Toolbar style={{display: 'flex', justifyContent: 'center'}}>
         <div>
           <Button variant="text" color="inherit"
           onClick={() => {
