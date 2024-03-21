@@ -22,7 +22,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
-app.UseMiddleware<ExceptionHandlerMiddleware>();
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
 
 app.MapControllers();
