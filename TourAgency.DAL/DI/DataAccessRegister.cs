@@ -12,5 +12,7 @@ public static class DataAccessRegister
 		services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 		services.AddScoped<ICountryRepository, CountryRepository>();
+
+		services.AddScoped<IRouteRepository, RouteRepository>();
 	}
 }
