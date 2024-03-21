@@ -22,7 +22,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
-app.UseExceptionHandler();
+app.UseMiddleware<TourAgency.API.Middleware.ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 app.MapControllers();

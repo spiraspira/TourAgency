@@ -1,5 +1,6 @@
 // Global using directives
 
+global using System.Net;
 global using AutoMapper;
 global using FluentValidation;
 global using Microsoft.AspNetCore.Diagnostics;
