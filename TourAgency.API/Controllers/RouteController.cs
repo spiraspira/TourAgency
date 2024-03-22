@@ -38,7 +38,7 @@ public class RouteController(
 			await routeService.Update(mapper.Map<RouteModel>(model)));
 	}
 
-	[HttpDelete]
+	[HttpDelete("{id}")]
 	public async Task<RouteViewModel> Delete(Guid id)
 	{
 		return mapper.Map<RouteViewModel>(await routeService.Delete(id));

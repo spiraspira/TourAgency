@@ -38,7 +38,7 @@ public class SaleController(
 			await saleService.Update(mapper.Map<SaleModel>(model)));
 	}
 
-	[HttpDelete]
+	[HttpDelete("{id}")]
 	public async Task<SaleViewModel> Delete(Guid id)
 	{
 		return mapper.Map<SaleViewModel>(await saleService.Delete(id));
