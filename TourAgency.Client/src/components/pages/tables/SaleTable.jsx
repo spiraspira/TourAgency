@@ -7,36 +7,37 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { format } from 'date-fns';
 
-const RouteTable = () => {
+const SaleTable = () => {
   const [data, setData] = useState([]);
-  const [newRoute, setNewRoute] = useState({
-    countryId: '',
-    name: '',
-    travelPrice: ''
+  const [newSale, setNewSale] = useState({
+    routeId: '',
+    travelPurpose: '',
+    sellDate: ''
   });
-  const [countries, setCountries] = useState([]);
+  const [routes, setRoutes] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   useEffect(() => {
-    fetchCountries();
+    fetchRoutes();
   }, []);
   
-  const fetchCountries = async () => {
+  const fetchRoutes = async () => {
     try {
-      const response = await axios.get('https://localhost:59312/api/country');
-      setCountries(response.data);
+      const response = await axios.get('https://localhost:59312/api/route');
+      setRoutes(response.data);
     } catch (error) {
-      console.error('Error fetching countries:', error);
+      console.error('Error fetching routes:', error);
     }
   };
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://localhost:59312/api/route');
+      const response = await axios.get('https://localhost:59312/api/sale');
       setData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -50,10 +51,10 @@ const RouteTable = () => {
     setData(updatedData);
   };
 
-  const saveChanges = async (route) => {
+  const saveChanges = async (sale) => {
     try {
-      if (route) {
-        await axios.put(`https://localhost:59312/api/route`, route);
+      if (sale) {
+        await axios.put(`https://localhost:59312/api/sale`, sale);
         console.log('Changes saved successfully!');
         toast.success('Changes saved successfully!');
       }
@@ -63,18 +64,18 @@ const RouteTable = () => {
     }
   };
   
-  const deleteRow = async (route) => {
+  const deleteRow = async (sale) => {
     try {
       confirmAlert({
         title: 'Confirm Deletion',
-        message: 'Are you sure you want to delete this route?',
+        message: 'Are you sure you want to delete this sale?',
         buttons: [
           {
             label: 'Yes',
             onClick: async () => {
-              await axios.delete(`https://localhost:59312/api/route/${route.id}`);
-              console.log('Route deleted successfully!');
-              toast.success('Route deleted successfully!');
+              await axios.delete(`https://localhost:59312/api/sale/${sale.id}`);
+              console.log('Sale deleted successfully!');
+              toast.success('Sale deleted successfully!');
               fetchData();
             }
           },
@@ -87,30 +88,31 @@ const RouteTable = () => {
         ]
       });
     } catch (error) {
-      console.error('Error deleting route:', error);
-      toast.error('Error deleting route!');
+      console.error('Error deleting sale:', error);
+      toast.error('Error deleting sale!');
     }
   };
 
-  const handleNewRouteChange = (event) => {
+  const handleNewSaleChange = (event) => {
     const { name, value } = event.target;
-    setNewRoute((prevCountry) => ({ ...prevCountry, [name]: value }));
+    setNewSale((prevSale) => ({ ...prevSale, [name]: value }));
+    setNewSale((prevSlae) => ({ ...prevSlae, sellDate: new Date()}));
   };
 
-  const createRoute = async () => {
+  const createSale = async () => {
     try {
-      await axios.post('https://localhost:59312/api/route', newRoute)
-      console.log('Route created successfully!');
-      setNewRoute({
-        countryId: '',
-        name: '',
-        travelPrice: ''
+      await axios.post('https://localhost:59312/api/sale', newSale)
+      console.log('Sale created successfully!');
+      setNewSale({
+        routeId: '',
+        travelPurpose: '',
+        sellDate: ''
       });
       fetchData();
-      toast.success('Route created successfully!');
+      toast.success('Sale created successfully!');
     } catch (error) {
-      console.error('Error creating route:', error);
-      toast.error('Error creating route!');
+      console.error('Error creating sale:', error);
+      toast.error('Error creating sale!');
     }
   };
 
@@ -125,7 +127,7 @@ const RouteTable = () => {
         }
     }>
         <Typography variant="h4" component="h1" gutterBottom>
-      Страны
+      Продажи
     </Typography>
     <div style={
         {
@@ -135,9 +137,9 @@ const RouteTable = () => {
       <Table>
         <TableHead>
           <TableRow>
-          <TableCell>Страна</TableCell>
-            <TableCell>Название маршрута</TableCell>
-            <TableCell>Цена путевки, руб.</TableCell>
+          <TableCell>Маршрут</TableCell>
+            <TableCell>Цель поездки</TableCell>
+            <TableCell>Дата продажи</TableCell>
             <TableCell>Действие</TableCell>
           </TableRow>
         </TableHead>
@@ -146,31 +148,33 @@ const RouteTable = () => {
             <TableRow key={item.id}>
                 <TableCell>
   <Select
-    name="countryId"
-    value={item.countryId}
+    name="routeId"
+    value={item.routeId}
     onChange={(event) => handleInputChange(event, index)}
   >
-    {countries.map((country) => (
-      <MenuItem key={country.id} value={country.id}>
-        {country.name}
+    {routes.map((route) => (
+      <MenuItem key={route.id} value={route.id}>
+        {route.country.name + " | " + route.name}
       </MenuItem>
     ))}
   </Select>
 </TableCell>
               <TableCell>
                 <TextField
-                  name="name"
-                  value={item.name}
+                  name="travelPurpose"
+                  value={item.travelPurpose}
                   onChange={(event) => handleInputChange(event, index)}
                 />
               </TableCell>
               <TableCell>
-                <TextField
-                  name="travelPrice"
-                  value={item.travelPrice}
-                  onChange={(event) => handleInputChange(event, index)}
-                />
-              </TableCell>
+  <TextField
+    name="sellDate"
+    value={format(new Date(), 'yyyy-MM-dd')}
+    InputProps={{
+      readOnly: true,
+    }}
+  />
+</TableCell>
               <TableCell>
               <IconButton color="primary" onClick={() => {
   saveChanges(item);
@@ -189,33 +193,35 @@ const RouteTable = () => {
           <TableRow>
           <TableCell>
   <Select
-    name="countryId"
-    value={newRoute.countryId}
-    onChange={handleNewRouteChange}
+    name="routeId"
+    value={newSale.routeId}
+    onChange={handleNewSaleChange}
   >
-    {countries.map((country) => (
-      <MenuItem key={country.id} value={country.id}>
-        {country.name}
+    {routes.map((route) => (
+      <MenuItem key={route.id} value={route.id}>
+        {route.country.name + " | " + route.name}
       </MenuItem>
     ))}
   </Select>
 </TableCell>
             <TableCell>
               <TextField
-                name="name"
-                value={newRoute.name}
-                onChange={handleNewRouteChange}
+                name="travelPurpose"
+                value={newSale.travelPurpose}
+                onChange={handleNewSaleChange}
               />
             </TableCell>
             <TableCell>
-              <TextField
-                name="travelPrice"
-                value={newRoute.travelPrice}
-                onChange={handleNewRouteChange}
-              />
-            </TableCell>
+  <TextField
+    name="sellDate"
+    value={format(new Date(), 'yyyy-MM-dd')}
+    InputProps={{
+      readOnly: true,
+    }}
+  />
+</TableCell>
             <TableCell>
-              <IconButton color="primary" onClick={createRoute}>
+              <IconButton color="primary" onClick={createSale}>
                 <SaveIcon />
               </IconButton>
             </TableCell>
@@ -231,4 +237,4 @@ const RouteTable = () => {
   );
 };
 
-export default RouteTable;
+export default SaleTable;
