@@ -125,7 +125,7 @@ const RouteTable = () => {
         }
     }>
         <Typography variant="h4" component="h1" gutterBottom>
-      Страны
+      Маршруты
     </Typography>
     <div style={
         {
