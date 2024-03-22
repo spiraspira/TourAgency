@@ -138,6 +138,8 @@ const RouteTable = () => {
           <TableCell>Страна</TableCell>
             <TableCell>Название маршрута</TableCell>
             <TableCell>Цена путевки, руб.</TableCell>
+            <TableCell>Продано путевок</TableCell>
+            <TableCell>Итого, руб.</TableCell>
             <TableCell>Действие</TableCell>
           </TableRow>
         </TableHead>
@@ -169,6 +171,24 @@ const RouteTable = () => {
                   name="travelPrice"
                   value={item.travelPrice}
                   onChange={(event) => handleInputChange(event, index)}
+                />
+              </TableCell>
+              <TableCell>
+                <TextField
+                  name="salesNumber"
+                  value={item.sales.length}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </TableCell>
+              <TableCell>
+                <TextField
+                  name="totalAmount"
+                  value={item.sales.length * item.travelPrice}
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </TableCell>
               <TableCell>
@@ -214,6 +234,8 @@ const RouteTable = () => {
                 onChange={handleNewRouteChange}
               />
             </TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
             <TableCell>
               <IconButton color="primary" onClick={createRoute}>
                 <SaveIcon />
