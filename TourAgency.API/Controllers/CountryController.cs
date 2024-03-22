@@ -38,7 +38,7 @@ public class CountryController(
 			await countryService.Update(mapper.Map<CountryModel>(model)));
 	}
 
-	[HttpDelete]
+	[HttpDelete("{id}")]
 	public async Task<CountryViewModel> Delete(Guid id)
 	{
 		return mapper.Map<CountryViewModel>(await countryService.Delete(id));

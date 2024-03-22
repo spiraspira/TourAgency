@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSerilog();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidatorsFromAssembly(Assembly.Load("TourAgency.API"));
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -21,6 +22,11 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
+app.UseCors(corsPolicyBuilder => corsPolicyBuilder
+	.AllowAnyOrigin()
+	.AllowAnyMethod()
+	.AllowAnyHeader());
 
 app.UseMiddleware<TourAgency.API.Middleware.ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
